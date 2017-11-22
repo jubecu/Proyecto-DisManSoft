@@ -31,4 +31,28 @@ public class Lista {
 			}
 		}
 	}
+
+	public void añadirProducto(String producto) {
+		FileWriter fichero = null;
+		PrintWriter pw = null;
+		try {
+			fichero = new FileWriter(lista, true);
+			pw = new PrintWriter(fichero);
+			pw.println(producto);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (null != fichero)
+					fichero.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+	}
+	
+	public void quitarProducto(String producto){
+		
+	}
 }

@@ -1,4 +1,6 @@
 Pan
-Carne
 Huevos
 Leche
+Aceite
+Carne
+Sal

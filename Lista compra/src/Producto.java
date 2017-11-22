@@ -6,4 +6,8 @@ public class Producto {
 	public Producto(String nombre){
 		this.nombre=nombre;
 	}
+	
+	public String obtenerNombre(){
+		return nombre;
+	}
 }
