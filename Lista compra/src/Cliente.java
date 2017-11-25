@@ -1,26 +1,56 @@
+import Funcionalidad.Aplicacion;
 import java.util.Scanner;
 
+/**
+ * @author Alberto Uriarte Martínez y Juan Francisco Benito Cuesta
+ *
+ */
 public class Cliente {
 	
-	private Lista list;
+	private static Aplicacion app;
+	private static Scanner sc;
 
-	public static void addItem()
-	{ 
-		System.out.println();
-		System.out.println("enter in the name of your item");
-		Scanner keyboard = new Scanner(System.in);
-		String ItemName = keyboard.nextLine();
-
-		System.out.println("enter in the price of your item");
-		double ItemPrice = keyboard.nextDouble();
-
-		System.out.println("enter in the Qty of your item");
-		int ItemQty = keyboard.nextInt();
-
-		Objeto Item = new Objeto(ItemName, ItemPrice,
-				ItemQty);
-		list.add(Item);
-		System.out.println("Item Added");
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		
+		app=Aplicacion.getInstance();
+		sc = new Scanner(System.in);
+		boolean seguir=true;
+		
+		app.iniciarAplicacion();
+		
+		while(seguir){
+			System.out.println("APP - LISTA DE LA COMPRA");
+			System.out.println("1. Añadir producto");
+			System.out.println("2. Quitar producto");
+			System.out.println("3. Mostrar lista");
+			System.out.println("4. Salir de la aplicación");
+			System.out.println();
+			System.out.print("Elige una opción escribiendo su número: ");
+			String opcion = sc.nextLine();
+			
+			switch(opcion){
+			case "1":
+				System.out.print("Introduce el nombre del producto: ");
+				String nombreAnadir = sc.nextLine();
+				app.añadir(app.crearProducto(nombreAnadir));
+				break;
+			case "2":
+				System.out.print("Introduce el nombre del producto: ");
+				String nombreQuitar = sc.nextLine();
+				app.quitar(app.crearProducto(nombreQuitar));
+				break;
+			case "3":
+				app.mostrar();
+				System.out.println();
+				break;
+			case "4":
+				seguir=false;
+				break;
+			}
+		}
 	}
 
 }
