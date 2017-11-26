@@ -1,6 +1,1 @@
-Pan
-Huevos
-Leche
-Aceite
-Carne
-Sal
+Pan x1

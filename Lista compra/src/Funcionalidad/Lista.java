@@ -8,6 +8,10 @@ public class Lista {
 	public Lista(String nombreFichero) {
 		lista = new File(nombreFichero);
 	}
+	
+	public File obtenerFichero(){
+		return lista;
+	}
 
 	public void mostrarLista() {
 		FileReader fr = null;

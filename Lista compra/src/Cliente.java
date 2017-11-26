@@ -26,7 +26,8 @@ public class Cliente {
 			System.out.println("1. Añadir producto");
 			System.out.println("2. Quitar producto");
 			System.out.println("3. Mostrar lista");
-			System.out.println("4. Salir de la aplicación");
+			System.out.println("4. Cambiar la cantidad de un producto");
+			System.out.println("5. Salir de la aplicación");
 			System.out.println();
 			System.out.print("Elige una opción escribiendo su número: ");
 			String opcion = sc.nextLine();
@@ -40,13 +41,21 @@ public class Cliente {
 			case "2":
 				System.out.print("Introduce el nombre del producto: ");
 				String nombreQuitar = sc.nextLine();
-				app.quitar(app.crearProducto(nombreQuitar));
+				app.quitar(app.devolverProducto(nombreQuitar));
 				break;
 			case "3":
 				app.mostrar();
 				System.out.println();
 				break;
 			case "4":
+				System.out.print("Introduce el nombre del producto: ");
+				String nombreCantidad = sc.nextLine();
+				System.out.print("Introduce la nueva cantidad: ");
+				String cant = sc.nextLine();
+				int cantidad=Integer.parseInt(cant);
+				app.variarCantidad(app.crearProducto(nombreCantidad), cantidad);
+				break;
+			case "5":
 				seguir=false;
 				break;
 			}
