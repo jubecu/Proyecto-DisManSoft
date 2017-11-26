@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class Aplicacion {
 
 	private Lista lista;
-	private ArrayList<String> productos=new ArrayList<String>();
+	private ArrayList<String> productos = new ArrayList<String>();
 	private static Aplicacion instance = null;
 
 	private Aplicacion() {
@@ -45,17 +45,17 @@ public class Aplicacion {
 		}
 	}
 
-	public Producto crearProducto(String nombre) {
-		Producto producto = new Producto(nombre);
+	public Producto crearProducto(String nombre, int cantidad) {
+		Producto producto = new Producto(nombre, cantidad);
 		return producto;
 	}
-	
-	public String devolverProducto(String nombre){
-		Object[] productosArray=productos.toArray();
+
+	public String devolverProducto(String nombre) {
+		Object[] productosArray = productos.toArray();
 		String prod = null;
-		for(int i=0;i<productosArray.length;i++){
-			if(productosArray[i].toString().contains(nombre)){
-				prod=productosArray[i].toString();
+		for (int i = 0; i < productosArray.length; i++) {
+			if (productosArray[i].toString().contains(nombre)) {
+				prod = productosArray[i].toString();
 			}
 		}
 		return prod;
@@ -79,5 +79,15 @@ public class Aplicacion {
 		quitar(producto.toString());
 		producto.cambiarCantidad(cantidad);
 		añadir(producto);
+	}
+
+	public void marcarComprado(String producto) {
+
+		String prod = devolverProducto(producto);
+		int cantidad = Integer.parseInt(String.valueOf(prod.charAt(prod.length() - 1)));
+		quitar(devolverProducto(producto));
+		Producto prod2 = crearProducto(producto, cantidad);
+		prod2.cambiarComprado();
+		añadir(prod2);
 	}
 }

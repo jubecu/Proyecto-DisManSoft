@@ -1,4 +1,5 @@
 package Funcionalidad;
+
 import java.io.*;
 
 public class Lista {
@@ -8,8 +9,8 @@ public class Lista {
 	public Lista(String nombreFichero) {
 		lista = new File(nombreFichero);
 	}
-	
-	public File obtenerFichero(){
+
+	public File obtenerFichero() {
 		return lista;
 	}
 
@@ -56,47 +57,47 @@ public class Lista {
 			}
 		}
 	}
-	
-	public void quitarProducto(String producto){
+
+	public void quitarProducto(String producto) {
 		try {
-	 
-			//Creación de un nuevo archivo que más tarde será renombrado
-			//con el nombre del archivo original
-	        File tempFile = new File(lista.getAbsolutePath() + ".tmp");
-	 
-	        BufferedReader br = new BufferedReader(new FileReader("Lista.txt"));
-	        PrintWriter pw = new PrintWriter(new FileWriter(tempFile));
-	 
-	        String line = null;
-	 
-	        //Lee el archivo original y escribe en el nuevo
-	        //sin el producto que queremos quitar
-	        while ((line = br.readLine()) != null) {
-	 
-	            if (!line.trim().equals(producto)) {
-	 
-	                pw.println(line);
-	                pw.flush();
-	            }
-	        }
-	        pw.close();
-	        br.close();
-	 
-	        //Borra el archivo original
-	        if (!lista.delete()) {
-	            System.out.println("No se pudo borrar el archivo");
-	            return;
-	        }
-	 
-	        //Cambia el nombre del nuevo archivo por el del archivo original
-	        if (!tempFile.renameTo(lista)){
-	            System.out.println("No se pudo renombrar el archivo");
-	 
-	        }
-	    } catch (FileNotFoundException ex) {
-	        ex.printStackTrace();
-	    } catch (IOException ex) {
-	        ex.printStackTrace();
-	    }
+
+			// Creación de un nuevo archivo que más tarde será renombrado
+			// con el nombre del archivo original
+			File tempFile = new File(lista.getAbsolutePath() + ".tmp");
+
+			BufferedReader br = new BufferedReader(new FileReader("Lista.txt"));
+			PrintWriter pw = new PrintWriter(new FileWriter(tempFile));
+
+			String line = null;
+
+			// Lee el archivo original y escribe en el nuevo
+			// sin el producto que queremos quitar
+			while ((line = br.readLine()) != null) {
+
+				if (!line.trim().equals(producto)) {
+
+					pw.println(line);
+					pw.flush();
+				}
+			}
+			pw.close();
+			br.close();
+
+			// Borra el archivo original
+			if (!lista.delete()) {
+				System.out.println("No se pudo borrar el archivo");
+				return;
+			}
+
+			// Cambia el nombre del nuevo archivo por el del archivo original
+			if (!tempFile.renameTo(lista)) {
+				System.out.println("No se pudo renombrar el archivo");
+
+			}
+		} catch (FileNotFoundException ex) {
+			ex.printStackTrace();
+		} catch (IOException ex) {
+			ex.printStackTrace();
+		}
 	}
 }
