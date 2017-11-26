@@ -2,15 +2,25 @@ import Funcionalidad.Aplicacion;
 import java.util.Scanner;
 
 /**
+ * Clase con el main desde donde se interactúa con la aplicación.
+ * 
  * @author Alberto Uriarte Martínez y Juan Francisco Benito Cuesta
  *
  */
 public class Cliente {
-
+	/**
+	 * Aplicación
+	 */
 	private static Aplicacion app;
+	/**
+	 * Scanner para introducir valores por teclado
+	 */
 	private static Scanner sc;
 
 	/**
+	 * Main donde se crea una instancia de la aplicación, la iniciamos e
+	 * interactuamos con ella a través de un menú.
+	 * 
 	 * @param args
 	 */
 	public static void main(String[] args) {

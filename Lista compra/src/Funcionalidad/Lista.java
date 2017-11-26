@@ -2,18 +2,40 @@ package Funcionalidad;
 
 import java.io.*;
 
+/**
+ * Clase que representa una lista y sus operaciones.
+ * 
+ * @author Alberto Uriarte Martínez y Juan Francisco Benito Cuesta
+ *
+ */
 public class Lista {
-
+	/**
+	 * Archivo de texto donde se guarda la lista
+	 */
 	private File lista = null;
 
+	/**
+	 * Constructor que crea un archivo con un nombre concreto.
+	 * 
+	 * @param nombreFichero
+	 *            Nombre del archivo de texto.
+	 */
 	public Lista(String nombreFichero) {
 		lista = new File(nombreFichero);
 	}
 
+	/**
+	 * Devuelve el fichero donde está guardada la lista.
+	 * 
+	 * @return fichero donde está guardada la lista
+	 */
 	public File obtenerFichero() {
 		return lista;
 	}
 
+	/**
+	 * Lee el fichero, lo recorre y va mostrando por pantalla línea a línea.
+	 */
 	public void mostrarLista() {
 		FileReader fr = null;
 		BufferedReader br = null;
@@ -38,6 +60,12 @@ public class Lista {
 		}
 	}
 
+	/**
+	 * Escribe al final del fichero un producto concreto.
+	 * 
+	 * @param producto
+	 *            Producto que queremos añadir
+	 */
 	public void añadirProducto(String producto) {
 		FileWriter fichero = null;
 		PrintWriter pw = null;
@@ -58,6 +86,13 @@ public class Lista {
 		}
 	}
 
+	/**
+	 * Crea un nuevo fichero con todos los mismos productos excepto el que
+	 * queremos quitar.
+	 * 
+	 * @param producto
+	 *            Producto que queremos eliminar de la lista
+	 */
 	public void quitarProducto(String producto) {
 		try {
 
